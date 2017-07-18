@@ -14,3 +14,7 @@ Since every simulation is independent from each other, this algorithm can be exe
 This is a project done during our bachelor degree, and we have chosen this algorithm like an example of _approximate calculus model_ 
 to create a case study for the BarbequeRTRM. We have developed a reconfigurable application that changes its precision according to the 
 resources parameters given by the framework 
+
+### Would you like more information?
+If you want more information about some classes or some methods, please, check out our [documentation pages](https://lnapo94.github.io/HestonFive).
+If you have more questions about our application, feel free to contact us.
