@@ -31,6 +31,29 @@ The HestonWorker has a fixed number of simulation, and all the created workers d
 ### How to start our application?
 First of all, download this clone this git repository in the BOSP directory: /BOSP/contrib/user/. After that, use `make bootstrap` (in this way BarbequeRTRM search our application and add it to the BOSP files), then use `make menuconfig` to select our application and add it to the BarbequeRTRM selected apps. Finally, start Barbeque and then start our application typing `hestonfive` in the BOSP CLI.
 
+### How to setup new parameters in the application?
+You can setup new option values from command line, simply typing one, or more, of this command:
+* `-n [--sims]`: Setup the number of simulations to do (60000 by default)
+* `-d [--discr]`: Setup the discretization value (300 by default)
+* `-r [--real]`: Setup the correct option value to know the error (34.9998 by default)
+
+* `-s [--spot]`: Setup the spot price of the option (100.0 by default)
+* `-K [--strike]`: Setup the strike price of the option (100.0 by default)
+* `-R [--risk]`: Setup the risk-free rate value of the option (0.05 by default)
+* `-T [--time]`: Setup the maturity time of the option, in years (5.0 by default)
+
+* `-v [--vol]`: Setup the volatility of the option (0.09 by default)
+* `-r [--rho]`: Setup the correlation coefficient of the option (-0.3 by default)
+* `-k [--kappa]`: Setup the mean reversion rate of the option (2.0 by default)
+* `-t [--theta]`: Setup the long-term volatility of the option (0.09 by default)
+* `-x [--xi]`: Setup the volatility value of the option volatility (1.0 by default)
+
+Remember that the minimum supported value of simulations is 10000 (if you under of this value, the option simulated price will not be correct). Moreover, if you change the option parameters, remember to change also the exact value of the option. In this way you will have the good computation of the error.
+
+If you can't remeber all of these settings, don't worry, you can just type `hestonfive -h` on console.
+
 ### Would you like more information?
-If you want more information about some classes or some methods, please, check out our [documentation pages](https://lnapo94.github.io/HestonFive).
-If you have more questions about our application, feel free to contact us.
+If you want more information about some classes or some methods, please, check out our [documentation pages](https://lnapo94.github.io/HestonFive). 
+If you want more information about the BarbequeRTRM project, goes to [this site](https://bosp.dei.polimi.it/doku.php).
+
+Otherwise, if you have more questions about our application, feel free to contact us.
