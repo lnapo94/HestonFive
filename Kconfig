@@ -1,0 +1,12 @@
+
+config CONTRIB_HESTONFIVE
+  bool "HestonFive"
+  select CONTRIBS
+  default n
+  ---help---
+  Build the HestonFive application.
+  
+  Insert here a description of this application.
+
+  If unsure, say No to this option.
+
