@@ -54,6 +54,6 @@ If you can't remeber all of these settings, don't worry, you can just type `hest
 
 ### Would you like more information?
 If you want more information about some classes or some methods, please, check out our [documentation pages](https://lnapo94.github.io/HestonFive). 
-If you want more information about the BarbequeRTRM project, goes to [this site](https://bosp.dei.polimi.it/doku.php).
+If you want more information about the BarbequeRTRM project, go to [this site](https://bosp.dei.polimi.it/doku.php).
 
 Otherwise, if you have more questions about our application, feel free to contact us.
