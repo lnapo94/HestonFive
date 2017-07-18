@@ -54,6 +54,14 @@ public:
 	HestonFive(std::string const & name,
 			std::string const & recipe,
 			RTLIB_Services_t *rtlib, double, double, double, double, double, double, double, double, double, int, int);
+	
+	/**
+	 * Method used to set the correct value of the option to calculate the error.
+	 * If it is unknown, then there will be not shown the error
+	 *
+	 * @param correctValue	The correct value of the option, used to show the error
+	 */
+	void setCorrectValue(double correctValue);
 
 private:
 
@@ -92,6 +100,12 @@ private:
 	double K;
 	double r;
 	double T;
+
+	/**
+	 * Variables used if the correct value of the option is known
+	 */
+	double correctValue;
+	bool correctValueIsKnown;
 	
 	/**
  	 * Method used to do all the Setup operations

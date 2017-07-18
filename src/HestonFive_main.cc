@@ -134,6 +134,10 @@ int simulationNumber;
  */
 int discretization;
 
+/**
+ * @brief The correct value of the option. By default the value is 34.9998
+ */
+double correctValue;
 
 void ParseCommandLine(int argc, char *argv[]) {
 	// Parse command line params
@@ -195,6 +199,9 @@ int main(int argc, char *argv[]) {
 		("discr,d", po::value<int>(&discretization)->
 			default_value(300),
 			"Discretization value")
+		("real,rv", po::value<double>(&correctValue)->
+			default_value(34.9998),
+			"The real value of the option to compute the error")
 
 		("spot,s", po::value<double>(&S0)->
 			default_value(100.0),
@@ -223,7 +230,7 @@ int main(int argc, char *argv[]) {
 			"Long-Term volatility")
 		("xi,x", po::value<double>(&xi)->
 			default_value(1.0),
-			"Volatility of volatility")
+			"Volatility of volatility")	
 	;
 
 	// Setup a logger
@@ -250,7 +257,12 @@ int main(int argc, char *argv[]) {
 
 	logger->Info("STEP 1. Registering EXC using [%s] recipe...",
 			recipe.c_str());
-	pexc = pBbqueEXC_t(new HestonFive("HestonFive", recipe, rtlib, S0, K, r, T, V0, rho, kappa, theta, xi, simulationNumber, discretization));
+
+	HestonFive* app = new HestonFive("HestonFive", recipe, rtlib, S0, K, r, T, V0, rho, kappa, theta, xi, simulationNumber/2, discretization);
+	
+	app->setCorrectValue(correctValue);	
+	
+	pexc = pBbqueEXC_t(app);
 	if (!pexc->isRegistered()) {
 		logger->Fatal("Registering failure.");
 		return RTLIB_ERROR;

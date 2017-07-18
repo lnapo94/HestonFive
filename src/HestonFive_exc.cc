@@ -74,6 +74,8 @@ HestonFive::HestonFive(std::string const & name,
 	this->discretization = discretization;
 	this->doneSimulations = 0;
 	
+	this->correctValueIsKnown = false;
+	
 	this->pricesToCompute = (int) (todo_simulations / WORKERS_SIM);
 	this->computedPrices = new double[pricesToCompute];
 	this->computedPricesIndex = 0;	
@@ -97,6 +99,11 @@ HestonFive::HestonFive(std::string const & name,
 	std::cout << std::endl;
 
 
+}
+
+void HestonFive::setCorrectValue(double correctValue) {
+	this->correctValue = correctValue;
+	this->correctValueIsKnown = true;
 }
 
 /**
@@ -204,7 +211,16 @@ RTLIB_ExitCode_t HestonFive::onMonitor() {
 
 	threadFinalPrice = ( ( workersFinalSum / (double) ((doneSimulations * 2))) * exp( -(r) * (T) ) );
 	logger->Warn("ON_MONITOR: Price updated: %f", threadFinalPrice);
+	if(correctValueIsKnown) {
+		double error;
+		if(threadFinalPrice > correctValue) 
+			error = threadFinalPrice - correctValue;
+		else
+			error = correctValue - threadFinalPrice;
 
+		logger->Warn("ON_MONITOR: Correct Value: %f", correctValue);
+		logger->Warn("ON_MONITOR: Error: %f", error);
+	}
 	return RTLIB_OK;
 }
 
