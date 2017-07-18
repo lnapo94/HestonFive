@@ -15,6 +15,10 @@ This is a project done during our bachelor degree, and we have chosen this algor
 to create a case study for the BarbequeRTRM. We have developed a reconfigurable application that changes its precision according to the 
 resources parameters given by the framework 
 
+### How our application work?
+HestonFive application is divided into two main parts, Option class and HestonWorker class. These two classes are created to reach two main goals: the expandability of our code with new kind of option and the run-time reconfiguration. In fact, to reach the first goal there is the Option class; it is the base class for all the options. If you want to add a new option, you can easily override the virtual method _optionCalculator()_ with the correct operations to calculate the final price of your option.
+While, to reach the second goal, we have used the HestonWorker class, that create a thread to compute on packet of simulations. Each HestonWorker is created in the setup function of the application considering the processors number in the machine. After that, in the configuration function of the app, we take from the BarbequeRTRM platform the processor quote assigned to us, and with that parameter we configure the exact number of workers to start for the computation. Moreover, every time the BarbequeRTRM reconfigure our application, we always start the correct number of worker to do all the required simulations in the shortest time.
+
 ### Would you like more information?
 If you want more information about some classes or some methods, please, check out our [documentation pages](https://lnapo94.github.io/HestonFive).
 If you have more questions about our application, feel free to contact us.
