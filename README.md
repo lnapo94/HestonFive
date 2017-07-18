@@ -28,6 +28,9 @@ HestonFive application is divided into two main parts, Option class and HestonWo
 While, to reach the second goal, we have used the HestonWorker class, that create a thread to compute on packet of simulations. Each HestonWorker is created in the setup function of the application considering the processors number in the machine. After that, in the configuration function of the app, we take from the BarbequeRTRM platform the processor quote assigned to us, and with that parameter we configure the exact number of workers to start for the computation. Moreover, every time the BarbequeRTRM reconfigure our application, we always start the correct number of worker to do all the required simulations in the shortest time.
 The HestonWorker has a fixed number of simulation, and all the created workers do the same number for the needed time to complete all the required simulations. 
 
+### How to start our application?
+First of all, download this clone this git repository in the BOSP directory: /BOSP/contrib/user/. After that, use `make bootstrap` (in this way BarbequeRTRM search our application and add it to the BOSP files), then use `make menuconfig` to select our application and add it to the BarbequeRTRM selected apps. Finally, start Barbeque and then start our application typing `hestonfive` in the BOSP CLI.
+
 ### Would you like more information?
 If you want more information about some classes or some methods, please, check out our [documentation pages](https://lnapo94.github.io/HestonFive).
 If you have more questions about our application, feel free to contact us.
