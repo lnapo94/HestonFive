@@ -8,19 +8,19 @@ This is our README file. We create this document to help you to understand the u
 Nowadays options are one of the most traded financial derivatives. Different kinds of this contract types exist, such as European, American and Exotic. 
 The process to price them is not trivial, thus, a portfolio strategy requires an accurate and quick pricing tool in order to be successful. To describe options value oscillations as a function of time, in the most appropriate mathematical way, we need to use stochastic volatility models. Among them the Heston model is the best one in describing the market behavior. 
 Due to the complexity of the Heston model, only European options may be analytically evaluated, hence, Monte Carlo simulations are used to overcome this obstacle.
-Since every simulation is independent from each other, this algorithm can be executed in parallels
+Since every simulation is independent from each other, this algorithm can be executed in parallel
 
 ### Why we have developed this algorithm under the BarbequeRTRM?
 This is a project done during our bachelor degree, and we have chosen this algorithm like an example of _approximate calculus model_ 
-to create a case study for the BarbequeRTRM. We have developed a reconfigurable application that changes its precision according to the 
+to create a case study for the BarbequeRTRM. So, we have developed a reconfigurable version of an Options pricing tool that changes its precision according to the 
 resources parameters given by the framework 
 
 ### What is the Heston Model?
-The Heston model is a mathematical model used in financial world to describe an oscillation of the option price.
-It is useful because, before that model, only options with a fixed volatility can be computed, and in this way the forecast has an important error. But with the Heston Model, the volatility is consider like a stochastic motion, so the computed option price is very similiar to the real option price. But this model has a problem, only European option can be exactly computed, for the other options it is needed a numerical simulations
+The Heston model is a mathematical model used in financial world to describe the oscillations of the option price. 
+It is useful because, before that model, only options with a fixed volatility can be computed, and in this way the forecast has an important error. But with the Heston Model, the volatility is considered as a stochastic process, so the computed option price is very similiar to the real option price. But this model has a problem, only European options can be exactly computed, for the other options it is needed a numerical simulation approach
 
 ### What is the Monte Carlo method?
-The Monte Carlo method is a simple, but very powerful, algorithm to compute all the stochastic equations thanks to a simple idea: simulating the equation. If an equation cannot be compute, but has stochastics variables, it can be simulated. This algorithm is used in a wide range of fields: mathematics, physics, engineering, finance and so on. The mainly problem of this algorithm is the error, because it is a simulation, and not the exact answer to the equation. But, fortunately, statistics help us with the central limit theorem: more is the number of the simulations, less is the value of the error.
+The Monte Carlo method is a simple, but very powerful, algorithm used to compute all the stochastic equations thanks to a simple idea: simulating the equation. If an equation cannot be compute, but has stochastics variables, it can be simulated. This algorithm is used in a wide range of fields: mathematics, physics, engineering, finance and so on. The mainly problem of this algorithm is the error, because it is a simulation, and not the exact answer to the equation. But, fortunately, statistics help us with the central limit theorem: more is the number of the simulations, less is the value of the error.
 For our financial problem, the Heston Model solution, is a very good algorithm, because it give us a very good result in a good time.
 
 ### How our application work?
@@ -48,7 +48,7 @@ You can setup new option values from command line, simply typing one, or more, o
 * `-t [--theta]`: Setup the long-term volatility of the option (0.09 by default)
 * `-x [--xi]`: Setup the volatility value of the option volatility (1.0 by default)
 
-Remember that the minimum supported value of simulations is 10000 (if you under of this value, the option simulated price will not be correct). Moreover, if you change the option parameters, remember to change also the exact value of the option. In this way you will have the good computation of the error.
+Remember that the minimum supported value of simulations is 10000 (if you want to go under of this value, the option simulated price will not be correct). Moreover, if you change the option parameters, remember to change also the exact value of the option. In this way you will have the good computation of the error.
 
 If you can't remeber all of these settings, don't worry, you can just type `hestonfive -h` on console.
 
