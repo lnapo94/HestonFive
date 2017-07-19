@@ -231,16 +231,18 @@ RTLIB_ExitCode_t HestonFive::onRelease() {
 
 	logger->Warn("HestonFive::onRelease()  : exit");
 	
+	//Standard Deviation Calculus
+	double std_dev = 0.0;
+
 	for(int i=0; i < this->pricesToCompute; i++){
 		computedPrices[i] = (computedPrices[i] - threadFinalPrice) * (computedPrices[i] - threadFinalPrice);	
 	} 
 
-	double variance = 0.0;
 	for(int i=0; i < this->pricesToCompute; i++){
-		variance += computedPrices[i];
+		std_dev += computedPrices[i];
 	}
-	variance = sqrt(variance / (this->pricesToCompute));	
-	logger->Warn("Standard Deviation: %f", variance);	
+	std_dev = sqrt(std_dev / (this->pricesToCompute));	
+	logger->Warn("Standard Deviation: %f", std_dev);	
 
 	for(int i=0; i<cpuNumber; i++){
 		delete workers[i];
